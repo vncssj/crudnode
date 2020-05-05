@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-xs-12">
+            <a href="/add" class="btn btn-primary">Novo</a>
+        </div>
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>nome</th>
+                    <th>sobrenome</th>
+                    <th>nascimento</th>
+                    <th>email</th>
+                    <th>cep</th>
+                    <th>logradouro</th>
+                    <th>cidade</th>
+                    <th>estado</th>
+                    <th>pais</th>
+                    <th>complemento</th>
+                    <th>numero</th>
+                </tr>
+            </thead>
+            <% for(var i = 0; i < users.length; i++) {%>
+            <tr>
+                <td><%= users[i].nome %></td>
+                <td><%= users[i].sobrenome %></td>
+                <td><%= users[i].nascimento %></td>
+                <td><%= users[i].email %></td>
+                <td><%= users[i].cep %></td>
+                <td><%= users[i].logradouro %></td>
+                <td><%= users[i].cidade %></td>
+                <td><%= users[i].estado %></td>
+                <td><%= users[i].pais %></td>
+                <td><%= users[i].complemento %></td>
+                <td><%= users[i].numero %></td>
+            </tr>
+            <% } %>
+        </table>
+    </div>
+</body>
+
+</html>
