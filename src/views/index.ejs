@@ -1,49 +1,28 @@
-<html>
-
-<head>
-    <title></title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/a048c6ba8a.js" crossorigin="anonymous"></script>
-</head>
-
-<body>
-    <div class="container">
-        <div class="spacer-md">&nbsp</div>
-        <div class="col-xs-12">
-            <a href="/add" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Novo</a>
-        </div>
-        <div class="spacer-md">&nbsp</div>
+<%- include('partials/head') %>
+<div class="row">
+    <div class="col-md-10 offset-1">
         <table class="table table-hover">
             <thead class="thead-dark">
                 <tr>
                     <th>Nome</th>
-                    <th>Sobrenome</th>
                     <th>Nascimento</th>
                     <th>Email</th>
-                    <th>Cep</th>
-                    <th>Logradouro</th>
-                    <th>Cidade</th>
-                    <th>Estado</th>
-                    <th>Pais</th>
-                    <th>Complemento</th>
-                    <th>Numero</th>
-                    <th colspan="2"></th>
+                    <th>Endereço</th>
+                    <th colspan="2">
+                        <a href="/add" class="btn btn-light btn-sm"><i class="fas fa-plus"></i> Add Tia</a>
+                    </th>
                 </tr>
             </thead>
             <% for(var i = 0; i < users.length; i++) {%>
             <tr>
-                <td><%= users[i].nome %></td>
-                <td><%= users[i].sobrenome %></td>
+                <td><%= users[i].nome %> <%= users[i].sobrenome %></td>
                 <td><%= users[i].nascimento %></td>
                 <td><%= users[i].email %></td>
-                <td><%= users[i].cep %></td>
-                <td><%= users[i].logradouro %></td>
-                <td><%= users[i].cidade %></td>
-                <td><%= users[i].estado %></td>
-                <td><%= users[i].pais %></td>
-                <td><%= users[i].complemento %></td>
-                <td><%= users[i].numero %></td>
+                <td><%= users[i].cep %>:
+                    <%= users[i].logradouro %>, <%= users[i].numero %>, <%= users[i].complemento %>,
+                    <%= users[i].cidade %>
+                    - <%= users[i].estado %>, <%= users[i].pais %>
+                </td>
                 <td>
                     <a class="btn btn-sm btn-light" href="/edit/<%= users[i]._id %>"><i class="far fa-edit"></i></a>
                 </td>
@@ -55,6 +34,5 @@
             <% } %>
         </table>
     </div>
-</body>
-
-</html>
+</div>
+<%- include('partials/footer') %>
