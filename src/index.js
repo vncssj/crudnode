@@ -16,39 +16,75 @@ app.set('view engine', 'ejs');
 
 app.set('views', './src/views/');
 
-app.get('/', (req, res) => {
-    client.connect(err => {
-        const collection = client.db("crud").collection("users");
-        // perform actions on the collection object
-        collection.find().toArray((err, results) => {
-            if (err) return console.log(err)
-            res.render('index.ejs', { users: results })
-        })
-    });
+client.connect(err => {
+    collection = client.db("crud").collection("users");
 })
 
+app.get('/', (req, res) => {
+    collection.find().toArray((err, results) => {
+        if (err) return console.log(err)
+        res.render('index.ejs', { users: results })
+    })
+})
+
+// ADD USER
 app.get('/add', (req, res) => {
-    client.connect(err => {
-        const collection = client.db("crud").collection("users");
-        // perform actions on the collection object
-        collection.find().toArray((err, results) => {
-            if (err) return console.log(err)
-            res.render('add.ejs', { users: results })
-        })
-    });
+    collection.find().toArray((err, results) => {
+        if (err) return console.log(err)
+        res.render('add.ejs', { users: results })
+    })
 })
 
 app.post('/add', (req, res) => {
-    client.connect(err => {
-        const collection = client.db("crud").collection("users");
-
-        collection.insertOne(req.body, function (err, res) {
-            if (err) throw err;
-            console.log("User was added");
-        });
-        res.redirect('/')
+    collection.insertOne(req.body, function (err, res) {
+        if (err) throw err;
+        console.log("User was added");
     });
+    res.redirect('/')
 })
+// END - ADD USER
+
+// EDIT USER
+app.get('/edit/:id', (req, res) => {
+
+    var id = req.params.id
+
+    collection.find(ObjectId(id)).toArray((err, results) => {
+        if (err) return console.log(err)
+        res.render('edit.ejs', { user: results })
+    })
+})
+app.post('/edit/', (req, res) => {
+
+    var data = req.body;
+    var id = data.id
+    delete data.id;
+
+    collection.updateOne({ _id: ObjectId(id) }, { $set: data },
+        ((err, results) => {
+            if (err) return console.log(err)
+            res.redirect('/')
+            console.log('User was updated')
+        })
+    )
+})
+// END - EDIT USER
+
+// DELETE USER
+app.get('/delete/:id', (req, res) => {
+
+    var id = req.params.id
+
+    collection.deleteOne({ _id: ObjectId(id) },
+        ((err, results) => {
+            if (err) return console.log(err)
+            res.redirect('/')
+            console.log('User was deleted')
+        })
+    )
+})
+// END - DELETE USER
+
 
 function cleanup() {
     client.close();
