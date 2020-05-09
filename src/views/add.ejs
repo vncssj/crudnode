@@ -1,5 +1,6 @@
 <%- include('partials/head') %>
 <h2 class="text-center">Adicionar Nova Tia</h2>
+<div class="spacer-md">&nbsp</div>
 <div class="container">
     <form action="/add" method="POST">
         <div class="form-group form-inline">
@@ -7,22 +8,28 @@
             <input class="form-control col-xs-12 col-md-6" name="sobrenome" placeholder="Insira seu sobrenome" />
         </div>
         <div class="form-group form-inline">
-            <input class="form-control col-xs-12 col-md-6" name="nascimento" placeholder="Insira seu nascimento" />
+            <input class="form-control col-xs-12 col-md-6" name="nascimento" placeholder="Insira seu nascimento"
+                type="date" />
             <input class="form-control col-xs-12 col-md-6" name="email" placeholder="Insira seu email" />
         </div>
         <div class="form-group form-inline">
-            <input class="form-control col-xs-12 col-md-2" name="cep" placeholder="Insira seu cep" />
-            <input class="form-control col-xs-12 col-md-10" name="logradouro" placeholder="Insira seu logradouro" />
+            <input class="form-control col-xs-12 col-md-2" name="cep" placeholder="Insira seu cep" id="cep-field" />
+            <input class="form-control col-xs-12 col-md-10" id="logradouro-field" name="logradouro"
+                placeholder="Insira seu logradouro" readonly />
         </div>
         <div class="form-group form-inline">
-            <input class="form-control col-xs-12 col-md-4" name="cidade" placeholder="Insira seu cidade" />
-            <input class="form-control col-xs-12 col-md-4" name="estado" placeholder="Insira seu estado" />
-            <input class="form-control col-xs-12 col-md-4" name="pais" placeholder="Insira seu pais" />
+            <input class="form-control col-xs-12 col-md-4" id="cidade-field" name="cidade"
+                placeholder="Insira seu cidade" readonly />
+            <input class="form-control col-xs-12 col-md-4" id="estado-field" name="estado"
+                placeholder="Insira seu estado" readonly />
+            <input class="form-control col-xs-12 col-md-4" name="numero" placeholder="Insira seu numero" />
         </div>
         <div class="form-group form-inline">
-            <input class="form-control col-xs-12 col-md-2" name="numero" placeholder="Insira seu numero" />
-            <input class="form-control col-xs-12 col-md-10" name="complemento" placeholder="Insira seu complemento" />
+            <input class="form-control col-xs-12 col-md-12" name="complemento" placeholder="Insira seu complemento" />
         </div>
+        <textarea class="form-control col-xs-12 col-md-12 text-center" name="text"
+            placeholder="Insira seu macro"></textarea>
+        <div class="spacer-md">&nbsp</div>
         <input class="btn btn-primary offset-5 col-2" type="submit" value="Salvar" />
     </form>
 </div>

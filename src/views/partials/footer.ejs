@@ -1,3 +1,14 @@
+<script>
+    $("#cep-field").blur(() => {
+        let cep = $("#cep-field").val();
+        $.get("https://viacep.com.br/ws/" + cep + "/json/", (data) => {
+            $("#cep-field").val(data.cep)
+            $("#logradouro-field").val(data.logradouro + ", " + data.localidade)
+            $("#cidade-field").val(data.localidade)
+            $("#estado-field").val(data.uf)
+        })
+    });
+</script>
 </body>
 
 </html>

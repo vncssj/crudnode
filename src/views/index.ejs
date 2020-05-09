@@ -8,8 +8,9 @@
                     <th>Nascimento</th>
                     <th>Email</th>
                     <th>Endereço</th>
-                    <th colspan="2">
-                        <a href="/add" class="btn btn-light btn-sm"><i class="fas fa-plus"></i> Add Tia</a>
+                    <th>Macro</th>
+                    <th colspan="3">
+                        <a href="/add" class="btn btn-light btn-sm"><i class="fas fa-plus"></i> Nova Tia</a>
                     </th>
                 </tr>
             </thead>
@@ -22,6 +23,11 @@
                     <%= users[i].logradouro %>, <%= users[i].numero %>, <%= users[i].complemento %>,
                     <%= users[i].cidade %>
                     - <%= users[i].estado %>, <%= users[i].pais %>
+                </td>
+                <td>
+                    <%= users[i].text %>
+                </td>
+                <td>
                 </td>
                 <td>
                     <a class="btn btn-sm btn-light" href="/edit/<%= users[i]._id %>"><i class="far fa-edit"></i></a>
